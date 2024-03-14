@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+  <!-- Run one mybot_teleop node -->
+  <node pkg="mybot_teleop" name="teleop" type="mybot_teleop.py" 
+        output="screen" required="true">
+  </node>	
+  <node pkg="turtlesim" name="turtle" type="turtlesim_node" 
+        output="screen" required="true">
+  </node>
+  <!--<param name="linear_scale" value="2.0"/>
+  <param name="angular_scale" value="2.0"/>-->
+
+
+
+</launch>
