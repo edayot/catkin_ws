@@ -24,7 +24,7 @@ keys = {
 if __name__ == "__main__":
 
     try:
-        pub = rospy.Publisher("/turtle1/cmd_vel", Twist, queue_size=10)
+        pub = rospy.Publisher("/cmd_vel", Twist, queue_size=10)
         rospy.init_node("teleop_maison", anonymous=True)
         # Get character from console
         while not rospy.is_shutdown():
