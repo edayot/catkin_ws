@@ -1,5 +1,6 @@
 {
     "terminal.integrated.env.linux": {
         "ROS_TYPE": "1"
-    }
+    },
+    "python.terminal.activateEnvironment": false,
 }
