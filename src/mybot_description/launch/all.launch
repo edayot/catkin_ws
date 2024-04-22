@@ -22,7 +22,11 @@
     <param name="linear_scale" value="0.4"/>
     <param name="angular_scale" value="0.4"/>
 
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mybot_description)/rviz/config.rviz"/>
+    <node pkg="mybot_control" name="lds_distance" type="lds_distance.py" output="screen" required="true"/>
+    <node pkg="mybot_control" name="stop_robot" type="stop_robot.py" output="screen" required="true"/>
+    <param name="distance_before_stop" value = "1.0"/>
+
+    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mybot_description)/rviz/config.rviz"/> -->
 
     <!-- <node pkg="joint_state_publisher_gui" name="joint_state_publisher_gui" type="joint_state_publisher_gui"/> -->
     <node pkg="robot_state_publisher" name="robot_state_publisher" type="robot_state_publisher"/>

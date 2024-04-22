@@ -31,7 +31,6 @@ if __name__ == "__main__":
             mykey = click.getchar()
             if mykey in keys.keys():
                 char = keys[mykey]
-                print(char)
             else:
                 print("Invalid key")
                 exit(0)
