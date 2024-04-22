@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<launch>
+ 
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model)_for_autorace_2020.urdf.xacro" />
+
+  <!-- Launch Rviz -->
+
+  <node pkg="joint_state_publisher_gui" name="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+  <node pkg="robot_state_publisher" name="robot_state_publisher" type="robot_state_publisher"/>
+
+  <!-- <node name="rviz" pkg="rviz" type="rviz"/> -->
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mybot_description)/rviz/config.rviz"/>
+
+</launch>
