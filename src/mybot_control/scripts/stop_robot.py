@@ -3,8 +3,7 @@
 
 import rospy
 import click
-from geometry_msgs.msg import Twist
-from std_msgs.msg import Float32MultiArray
+from std_msgs.msg import Float32MultiArray, String
 
 
 
@@ -13,15 +12,18 @@ def callback(msg : Float32MultiArray):
 
 
     if msg.data[0] != -1 and msg.data[0] < min_distance:
-        rospy.loginfo("obstacle in front")
-        msg = Twist()
-        msg.linear.x = 0
+        msg = String("front")
         pub.publish(msg)
     elif msg.data[1] != -1 and msg.data[1] < min_distance:
-        rospy.loginfo("obstacle in back")
-        msg = Twist()
-        msg.linear.x = 0
+        msg = String("back")
         pub.publish(msg)
+    elif msg.data[2] != -1 and msg.data[2] < min_distance:
+        msg = String("left")
+        pub.publish(msg)
+    elif msg.data[3] != -1 and msg.data[3] < min_distance:
+        msg = String("right")
+        pub.publish(msg)
+    
     
 
 
@@ -31,7 +33,7 @@ def callback(msg : Float32MultiArray):
 def main():
 
     global pub
-    pub = rospy.Publisher("/cmd_vel", Twist, queue_size=10)
+    pub = rospy.Publisher("/stop_robot", String, queue_size=10)
 
     rospy.Subscriber("/distance", Float32MultiArray, callback)
 

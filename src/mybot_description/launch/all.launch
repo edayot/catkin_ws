@@ -17,12 +17,13 @@
   
     <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
   
-    <node pkg="mybot_teleop" name="teleop" type="mybot_teleop.py" 
-          output="screen" required="true"/>
+    <!-- <node pkg="mybot_teleop" name="teleop" type="mybot_teleop.py" 
+          output="screen" required="true"/> -->
     <param name="linear_scale" value="0.4"/>
     <param name="angular_scale" value="0.4"/>
 
     <node pkg="mybot_control" name="lds_distance" type="lds_distance.py" output="screen" required="true"/>
+    <node pkg="mybot_control" name="control_robot" type="control_robot.py" output="screen" required="true"/>
     <node pkg="mybot_control" name="stop_robot" type="stop_robot.py" output="screen" required="true"/>
     <param name="distance_before_stop" value = "1.0"/>
 

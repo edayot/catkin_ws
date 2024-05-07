@@ -26,15 +26,13 @@ def callback(msg : LaserScan):
     left_distance = sum(left_list)/len(left_list) if len(left_list) != 0 else None
     right_distance = sum(right_list)/len(right_list) if len(right_list) != 0 else None
     
-    if (front_distance, back_distance, left_distance, right_distance) == (None, None, None, None):
-        return
     
     rospy.logdebug(f"front: {front_distance}, back: {back_distance}, left: {left_distance}, right: {right_distance}")
     msg = Float32MultiArray(data=[
-        front_distance if front_distance is not None else -1,
-        back_distance if back_distance is not None else -1,
-        left_distance if left_distance is not None else -1,
-        right_distance if right_distance is not None else -1
+        front_distance if front_distance is not None else np.inf,
+        back_distance if back_distance is not None else np.inf,
+        left_distance if left_distance is not None else np.inf,
+        right_distance if right_distance is not None else np.inf,
     ])
     pub.publish(msg)
     
