@@ -1,0 +1,14 @@
+<launch>
+    <!-- Launch basic gui turtle an always on top window -->
+    <node pkg="turtlesim" type="turtlesim_node" name="turtlesim_node" output="screen"
+          args="--window-geometry 0 0 0 0 --always-on-top"/>
+    />
+    <!-- Teleop turtle -->
+    <node pkg="turtlesim" type="turtle_teleop_key" name="turtle_teleop_key" output="screen"/>
+
+    <!-- Launch color turtle -->
+    <node pkg="color_turtle" type="color_turtle.py" name="color_turtle" output="screen"/>
+
+
+  </launch>
+  
