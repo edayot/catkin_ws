@@ -1,0 +1,27 @@
+<launch>
+
+    <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+    <arg name="x_pos" default="0.0"/>
+    <arg name="y_pos" default="0.0"/>
+    <arg name="z_pos" default="0.0"/>
+  
+  
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model)_for_autorace_2020.urdf.xacro" />
+  
+
+
+    <node name="rviz" pkg="rviz" type="rviz" 
+        args="-d $(find test_bag)/rviz/config.rviz"
+    />
+
+    
+    <!-- <node pkg="joint_state_publisher_gui" name="joint_state_publisher_gui" type="joint_state_publisher_gui"/> -->
+    <!-- <node pkg="robot_state_publisher" name="robot_state_publisher" type="robot_state_publisher"/> -->
+
+    <!-- Launch the rosbag "rosbag_turtlebot.bag" in loop mode -->
+    <node name="rosbag" pkg="rosbag" type="play" 
+        args="$(find test_bag)/bag/rosbag_turtlebot.bag --loop"
+    />
+
+  </launch>
+  
