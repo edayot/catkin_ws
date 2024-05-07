@@ -6,6 +6,8 @@ import rospy
 from turtlesim.msg import Pose
 from turtlesim.srv import SetPen
 
+current_color = (0, 0, 0)
+
 
 def callback(msg: Pose):
     name = "/turtle1/set_pen"
@@ -25,8 +27,10 @@ def callback(msg: Pose):
     red, green, blue = max(0, red), max(0, green), max(0, blue)
     red, green, blue = min(255, red), min(255, green), min(255, blue)
 
-    change_color(red, green, blue, 5, 0)
-    
+    global current_color
+    if current_color != (red, green, blue):
+        current_color = (red, green, blue)
+        change_color(red, green, blue, 5, 0)    
    
     
         
