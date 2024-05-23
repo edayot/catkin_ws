@@ -53,3 +53,5 @@ CATKIN_IGNORE
 
 
 **.bag
+
+**/__pycache__/

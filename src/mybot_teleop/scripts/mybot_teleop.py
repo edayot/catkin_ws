@@ -47,8 +47,8 @@ if __name__ == "__main__":
                 msg.angular.z = 1.0
             elif char == "turn_right":
                 msg.angular.z = -1.0
-            linear_scale = rospy.get_param("linear_scale", 1.0)
-            angular_scale = rospy.get_param("angular_scale", 1.0)
+            linear_scale = rospy.get_param("linear_scale", 0.4)
+            angular_scale = rospy.get_param("angular_scale", 0.4)
             msg.linear.x = msg.linear.x * linear_scale
             msg.linear.y = msg.linear.y * linear_scale
             msg.angular.z = msg.angular.z * angular_scale
